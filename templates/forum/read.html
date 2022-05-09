@@ -1,0 +1,119 @@
+{% extends 'base.html' %} {% block title %}
+
+<title>{{ title }}</title>
+<style>
+    .user-link {
+        color: #1d439b!important;
+        text-decoration: none;
+    }
+    
+    .user-link:hover {
+        text-decoration: underline;
+    }
+</style>
+<link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet"> {% endblock %} {% block body %}
+
+
+<div class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0">
+    <div class="row align-items-center">
+        <div class="col">
+            <h3 class="text-center">
+                {{title}}
+            </h3>
+        </div>
+
+
+
+
+    </div>
+    {% if session %}
+    <div class="row">
+        <div class="col text-center mt-5">
+            <button class="btn btn-primary"><a href="{{url_for('forum.comment', id=id, title=title)}}" class="text-white text-decoration-none">Post New Reply</a> </button>
+
+        </div>
+
+    </div>
+    {% endif %}
+    <!--Comment-->
+    <div class="row">
+
+        <div class="col">
+            {% for items in comments %}
+            <div class="card mt-5 row-hover pos-relative py-3 px-3 mb-3 ms-3  border-warning border-top-0 border-right-0 border-bottom-0 rounded-0">
+                <div class="row align-items-center p-4">
+                    <div class="container border" style="background-color: #4f74c8;">
+                        <div class="row">
+                            <div class="col mt-2">
+                                <h5 class="text-white">{{items[5]}}</h5>
+                            </div>
+                            <div class="col text-end">
+                                <p class="text-white">#{{items[0]}}</p>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="container border">
+                        <div class="row">
+
+                            <div class="col bg-light border-right">
+                                <div class="row">
+                                    <div class="col mt-2"> <a class="text-black user-link" href="{{url_for('auth.view', username=items[4], id=items[1])}}">{{items[4]}}</a></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"><img src="" alt="Users_Image" class="img rounded-4 img-fluid"></div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col mt-4">
+                                        {% if session and session.get('name') == items[4] %}
+                                        <span class="text-success">Online</span> {% else %}
+                                        <span class="text-danger">Offline</span> {% endif %}
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-8 mb-3 mb-sm-0 mt-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <p>
+                                                {{items[3]}}
+                                                <!--Comment-->
+                                            </p>
+
+                                            <div class="col text-end "><a href="#">Reply</a> </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    <!--Comment-->
+
+</div>
+
+
+
+
+
+{% endblock %}

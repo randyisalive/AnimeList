@@ -1,0 +1,74 @@
+{% extends 'base.html' %} {% block title %}
+<title>Login</title>
+
+{% endblock %} {% block body %}
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1 ps-1">{{ content.panel2 }}</span>
+</nav>
+
+<div class="container border">
+    <div class="row">
+        <div class="col-3 ">
+
+        </div>
+        <div class="col border mt-3 mb-3">
+            <div class="row">
+                <div class="col text-center mb-5">
+                    <span class="h6">Login With</span>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="container border-top ">
+                        <form action="" method="POST">
+                            <div class="container mb-3 mt-3">
+                                <div class="form-floating">
+                                    <input type="text" placeholder="Username..." class="form-control" name="username">
+                                    <label for="floatingInput">Username</label>
+                                </div>
+                            </div>
+                            <div class="container mb-3 mt-3">
+                                <div class="form-floating">
+                                    <input type="password" placeholder="Password..." class="form-control" name="password">
+                                    <label>Password</label>
+                                </div>
+                            </div>
+                            {% for messages in get_flashed_messages() %}
+                            <div class="container text-center text-danger">
+                                <h6>{{messages}}</h6>
+
+                            </div>
+                            {% endfor %}
+
+
+                            <div class="text-center container mb-5 mt-3">
+                                <input type="submit" value="Login" class="btn btn-primary">
+                            </div>
+
+
+                        </form>
+                        <div class="text-center container">
+                            <a href="" class="text-decoration-none ">Forgot Password?</a> |
+                            <a href="" class="text-decoration-none">Forgot Username?</a>
+                        </div>
+                        <div class="container text-center mt-5 mb-5">
+                            <a href="{{url_for('auth.signup')}}" class="btn btn-outline-primary">Sing Up</a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-3">
+
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}

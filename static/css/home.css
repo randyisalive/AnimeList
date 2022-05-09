@@ -1,0 +1,13 @@
+        .panel {
+        background-color: #1d439b;
+    }
+    
+    body {
+        font-size: 14px;
+        .background {
+            background-image: var(--bs-gradient);
+            --bs-bg-opacity: 1;
+        }
+        .img-panel {
+            width: 235px;
+        }
