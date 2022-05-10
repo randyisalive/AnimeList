@@ -13,6 +13,11 @@ def index():
     accounts = get_all_user()
     return render_template('admin/index.html', accounts=accounts)
 
+
+@super_user.route('/static-navigation')
+def sn():
+    return render_template('admin/layout-static.html')
+
 @super_user.route('/delete/<id>')
 def delete(id):
     id = delete_account_by_id(id)
