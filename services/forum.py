@@ -1,5 +1,29 @@
 from db import db_connection
 
+def get_total_forum():
+    db = db_connection()
+    cur = db.cursor()
+    sql = """SELECT COUNT(id)
+             FROM forum """
+    cur.execute(sql)
+    total_forum = cur.fetchone()
+    cur.close()
+    db.close()
+    return total_forum
+
+
+def get_total_forum_by_id(id):
+    db = db_connection()
+    cur = db.cursor()
+    sql = """SELECT COUNT(id)
+             FROM forum
+             WHERE users_id = '%s' """ % id
+    cur.execute(sql)
+    total_forum = cur.fetchone()
+    cur.close()
+    db.close()
+    return total_forum
+
 
 def get_all_forum():
     size = 5
